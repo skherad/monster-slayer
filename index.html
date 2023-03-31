@@ -48,7 +48,17 @@
         <h2>Battle Log</h2>
         <ul>
           <li v-for="log in battleLog">
-            {{ log.actionBy }} - {{ log.actionType }} - {{ log.actionValue }}
+            <span
+              :class="{'log--player':log.actionBy==='Player', 'log--monster': log.actionBy==='Monster'}"
+            >
+              {{ log.actionBy }}&nbsp
+            </span>
+            <span
+              :class="{'log--heal': log.actionType==='Heal', 'log--damage': log.actionType==='Attack'}"
+            >
+              {{ log.actionType }}&nbsp
+            </span>
+            <span> {{ log.actionValue }} </span>
           </li>
         </ul>
       </section>
